@@ -42,25 +42,26 @@ async function fetchFood(event) {
 
       console.log("FOOD");
       const response = await fetch(
-        `https://developers.zomato.com/api/v2.1/search?q=${recNames.value}&lat=${data.coords.latitude}&lon=${data.coords.longitude}&count=10`,
+        `https://developers.zomato.com/api/v2.1/search?q=${recNames.value}&lat=${data1.coords.latitude}&lon=${data1.coords.longitude}&count=10`,
 
         {
           headers: { "user-key": "207a0c5b1b9e7e8ba746b09b4ecdbd80" },
         }
       );
       const data = await response.json();
+      console.log(data);
 
       // Give me 10 bits of data
       for (i = 0; i < 10; i++) {
         // create it in a list
         var listEl = $("<li>");
-        var listDetail = name.concat("");
+        var listDetail = name.concat(" ");
         listEl.addClass("list-group-item").text(listDetail);
         listEl.appendTo("#fetchInfo");
 
         // Bring Data in the info box
         $("#fetchInfo").append(
-          data.restaurants[i].restaurant.name + " - Address: "
+          `${data.restaurants[i].restaurant.name} - Address: `
         );
 
         $("#fetchInfo").append(data.restaurants[i].restaurant.location.address);
@@ -70,7 +71,6 @@ async function fetchFood(event) {
         $("#fetchInfo").append(
           "  Opening times : " + data.restaurants[i].restaurant.timings
         );
-        console.log(data);
       }
     })
   }
