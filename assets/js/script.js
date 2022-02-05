@@ -4,6 +4,7 @@ let burgerBtn = $("#burgers");
 let pizzaBtn = $("#pizza");
 let kebabBtn = $("#kebab");
 let dessertsBtn = $("#desserts");
+let postcodeSearch = document.querySelector("#postcodeSearch");
 
 $(function () {
   var Restaurant = [
@@ -36,52 +37,84 @@ console.log("button clicked");
 async function fetchFood(event) {
   event.preventDefault();
 
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(async function(data1) {
-      console.log(data1.coords.latitude)
+  const response = await fetch(
+    `https://developers.zomato.com/api/v2.1/search?q=${recNames.value}&count=10`,
 
-      console.log("FOOD");
-      const response = await fetch(
-        `https://developers.zomato.com/api/v2.1/search?q=${recNames.value}&lat=${data1.coords.latitude}&lon=${data1.coords.longitude}&count=10`,
+    {
+      headers: { "user-key": "207a0c5b1b9e7e8ba746b09b4ecdbd80" },
+    }
+  );
 
-        {
-          headers: { "user-key": "207a0c5b1b9e7e8ba746b09b4ecdbd80" },
-        }
-      );
-      const data = await response.json();
-      console.log(data);
+  const data = await response.json();
 
-      // Give me 10 bits of data
-      for (i = 0; i < 10; i++) {
-        // create it in a list
-        var listEl = $("<li>");
-        var listDetail = name.concat(" ");
-        listEl.addClass("list-group-item").text(listDetail);
-        listEl.appendTo("#fetchInfo");
+  // Give me 10 bits of data
+  for (i = 0; i < 10; i++) {
+    // create it in a list
+    var listEl = $("<li>");
+    var listDetail = name.concat("");
+    listEl.addClass("list-group-item").text(listDetail);
+    listEl.appendTo("#fetchInfo");
 
-        // Bring Data in the info box
-        $("#fetchInfo").append(
-          `${data.restaurants[i].restaurant.name} - Address: `
-        );
+    // Bring Data in the info box
+    $("#fetchInfo").append(
+      data.restaurants[i].restaurant.name + " - Address: "
+    );
 
-        $("#fetchInfo").append(data.restaurants[i].restaurant.location.address);
-        // $("#fetchInfo").append(
-        //   "    Menu URL : " + data.restaurants[i].restaurant.url
-        // );
-        $("#fetchInfo").append(
-          "  Opening times : " + data.restaurants[i].restaurant.timings
-        );
-      }
-    })
+    $("#fetchInfo").append(data.restaurants[i].restaurant.location.address);
+    // $("#fetchInfo").append(
+    //   "    Menu URL : " + data.restaurants[i].restaurant.url
+    // );
+
+    $("#fetchInfo").append(
+      "  Opening times : " + data.restaurants[i].restaurant.timings
+    );
+    console.log(data);
   }
 }
 
+function postcode() {
+  var URL = `https://api.postcodes.io/postcodes?q=b81ph`;
 
+  fetch(URL).then(function (response) {
+    if (response.ok) {
+      response.json().then(function (data) {
+        var loc = data.result[0].postcode;
 
+        $("#location").append(data.result.postcode);
+        console.log(data);
+        console.log(URL);
+        // console.log(loc);
+      });
+    }
+  });
+}
+// ${postcodeSearch.value}
+postcode();
+
+// function geo() {
+//   if (navigator.geolocation) {
+//     navigator.geolocation.getCurrentPosition(function (position) {
+//       console.log(position);
+//       $.get(
+//         "http://maps.googleapis.com/maps/api/geocode/json?latlng=" +
+//           position.coords.latitude +
+//           "," +
+//           position.coords.longitude,
+//         function (data1) {
+//           console.log(data1);
+//         }
+//       );
+//     });
+//   }
+// }
+
+//developers.zomato.com/api/v2.1/search?q=${recNames.value}&lat=${data1.coords.latitude}&lon=${data1.coords.longitude}&count=10
 // CLEAR APPENDED STUFF ---
 
 // ------------------------------------------------------------------------------------------------------------
 // GIVE ME PIZZAS ONLY WHEN I CLICK THE PIZZA BUTTON....................
+// https:
+
 pizzaBtn.on("click", fetchPizzas);
 
 async function fetchPizzas(event) {
