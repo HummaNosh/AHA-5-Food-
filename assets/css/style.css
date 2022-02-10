@@ -126,6 +126,7 @@ li a:hover {
 
 .footer-heading a {
   color: black;
+  font-weight: 700;
   text-decoration: none;
   margin-bottom: 0.5rem;
 }
@@ -179,7 +180,8 @@ li a:hover {
 }
 
 #fetchInfo {
-  background-color: pink;
+  background-color: #485fc7;
+  color: white;
   font-size: 15px;
 }
 
@@ -261,6 +263,3 @@ footer {
   background-repeat: no-repeat;
   background-size: cover;
 } */
-
-.mySlides {
-}
