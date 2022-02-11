@@ -1,112 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Bulma link-->
+  
+    <title>ACHA 5 Foods</title>
+
+</head>
+<body>
+
+  <!-- This is hero and nav bar, still needs work-->
+    <section class="hero is-link is-full height">
+        <div class="hero-head">
+          <nav class="navbar">
+            <div class="container">
+              <div class="navbar-brand">
+                <a class="navbar-item">
+                <h1>ACHA</h1>
+                </a>
+                <span class="navbar-burger" data-target="navbarMenuHeroB">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </span>
+              </div>
+              <div id="navbarMenuHeroB" class="navbar-menu">
+                <div class="navbar-end">
+                  <a class="navbar-item is-active">
+                    Home
+                  </a>
+                  <a class="navbar-item">
+                    Food Gallery
+                  </a>
+                  <a class="navbar-item" href="./aboutus.html" target="_blank">
+                    About Us
+                  </a>
+                  <span class="navbar-item">
+                    <a class="button is-info is-inverted">
+                      <span>Log in</span>
+                    </a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+
+        <div class="hero-body">
+          <div class="container has-text-centered">
+            <p class="title">
+              ACHA! 
+            </p>
+            <p class="subtitle">
+              Make food fun...
+            </p>
+          </div>
+        </div>
+              <!-- Food selection buttons -->
+    <div class="hero-foot">
+      <nav class="tabs is-boxed has-addons is-centered">
+        <div class="container">
+          <ul>
+            <li class="" id="kebab"><a>Kebab</a></li>
+            <li class="" id="burgers"><a>Burgers</a></li>
+            <li class="" id="pizza"><a>Pizzas</a></li>
+            <li class="" id="desserts"><a>Desserts</a></li>
+            <li class="" id=""><a>Something different?</a></li>
+            
+          </ul>
+        </div>
+      </nav>
+    </div>
+
+  </section>
     <title>AHA! 5 Food</title>
 
     <header>
-      <img src= "https://tse2.mm.bing.net/th?id=OIP.xx6o-5gQTy1nZvKbju0ifAHaHa&pid=Api&P=0&w=177&h=177" alt="AHA logo">
 
-        <form id="Rest-Form">
-            <input type="text" class="form-control" id="restNames" placeholder="Close by restaurants..." />
-            <button type="submit" value="search" id = "SearchBtn">
-                Search
-              </button>
-              <button id="clearBtn"> Clear </button>
-        <!-- // Drop down auto options.... -->
+    <!--shop search and postcode entry-->
+ <div class="field">
+  <label class="label">Restaurant</label>
+  <div class="control">
+    <input class="input is-normal is-link" type="text" id="recNames" placeholder="Search for a restaurant...">
+  </div>
+</div>
 
-<!-- <script>
-    $(function () {
-      var Restaurant = [
-        "Dixy" Chicken",
-        "Aberdeen",
-        "Liverpool",
-        "Glasgow",
-        "Birmingham",
-        "Manchester",
-        "Essex",
-        "Tokyo",
-        "London",
-        "New York, USA",
-        "Paris",
-        "Islamabad",
-        "New Delhi",
-        "Chicago",
-        "Rome",
-        "San Francisco",
-        "Denver",
-      ];
-      $("#restNames").autocomplete({
-        source: Restaurant,
-      });
-    });</script> -->
-     </form>
-   
-     <nav>
-      <ul class="links">
-    <li><a href="#aboutus">About Us</a></li>
-    <li><a href="#aboutus">Contact Us</a></li>
-</nav>
+<div class="field">
+  <label class="label">Postcode</label>
+  <div class="control">
+    <input class="input is-normal is-link" type="text"  id="postcodeSearch" placeholder="e.g. B80 7ET">
+  </div>
+  <div id ="location" >Your Current Location:</div>
+    <br>
+    <div class="buttons are-medium has-addons is-centered">
+      <button class="button" type="submit" value="search" id="searchBtn">Search</button>
+      <button class="button" type="submit" value="search" id="clearBtn">Clear</button>
+    </div>
+  </div>
+</div>
     </header>
   </head>
   <body>
-    <main class="container">
-        <section class="dishes">
-            <div class="foodTypes" id="indian">Indian</div>
-            <div class="foodTypes" id="chinese">Chinese</div>
-            <div class="foodTypes" id="italian">Italian</div>
-            <div class="foodTypes" id="desserts">Desserts</div>
-        </section>
-
-        <section class="data">
-            <div></div>
+        <section class="data" id= "fetchInfo">        
         </section>
     </main>
     <br>
     <br>
     <br>
-      <div class="footer-container">
-      <div class="footer">
-        <div class="footer-heading fotter-1">
-          <h2>Project</h2>
-          <a href="#">Bloog</a>
-          <a href="#">Bloog</a>
-          <a href="#">Bloog</a>
-          <a href="#">Bloog</a>
-          <a href="#">Bloog</a>
-        </div>
-        <div class="footer-heading fotter-2">
-          <h2>About us</h2>
-          <a href="#">Bloog</a>
-          <a href="#">Bloog</a>
-          <a href="#">Bloog</a>
-          <a href="#">Bloog</a>
 
-      </div>
-      <div class="footer-heading fotter-3">
+
+<!-- <div class="footer-container"> -->
+  <footer class="footer">
+    <div class="footer-heading footer-1" id="contactusfooter">
+      <h2>Contact Us</h2>
+      <p> 📍 The Exchange, 3 Centenary Square, B1 2DR</p>
+      <br>
+      <p>☎️ 07719805686</p>
+      <br>
+      <p>📧 ACHAservices@outlook.co.uk</p>
+    </div>
+    <div class="footer-heading footer-2"id="aboutusfooter">
+      <h2>About us</h2>
+      <a href="https://github.com/anuur7/Portfolio-Page-Advanced-CSS">About Ayaanle</a>
+      <a href="https://corey96.github.io/portfolio-showcase/">About Corey</a>
+      <a href="https://github.com/HummaNosh/All-about-ME-My-Portfolio2.0">About Humma</a>
+      <a href="https://github.com/abbezz/Portfolio-demo">About Abdollah</a>
+    </div>
+
+      <div class="footer-heading footer-3" id="socialfooter">
         <h2>Social Media </h2>
         <a href="#">Instagram</a>
         <a href="#">Github</a>
         <a href="#">Linkedin</a>
-        <a href="#">Bloog</a>
-        <a href="#">Bloog</a>
        </div>
-       <div class="fotter-eamil-form">
-           <input type="email" placeholder="Enter your emial" id="footer-email">
+       <div class="footer-email-form">
+           <input type="email" placeholder="Enter your email" id="footer-email">
            <input type="submit" value="sign up" id="footer-email-btn">
        </div>
-
-       </div>
-       </div>
-
+    </footer>
     
-    
-    <script src="assets/js/script.js"></script>
+        
+    <!-- Here either pictures or list of restaurants when above button is clicked -->
+     <!---  <div class="card">
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+          </figure>
+        </div>
+      </div> -->
+
+     <!-- Information footer --> 
+     <!-- <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+          </p>
+        </div>
+      </footer> --> 
+
+
+      <div id='map' style='width: 400px; height: 300px;'></div>
+  <script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYWJiZXp6enoiLCJhIjoiY2t6N2J6YjB6MGsxMDJwczhreXJtY2J4MyJ9.GL4WPa1EtVSHSW5eMtzVPA';
+    var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [12.550343, 55.665957],
+      zoom: 8
+    });
+    // Create a default Marker and add it to the map.
+const marker1 = new mapboxgl.Marker()
+.setLngLat([12.554729, 55.70651])
+.addTo(map);
+ 
+// Create a default Marker, colored black, rotated 45 degrees.
+const marker2 = new mapboxgl.Marker({ color: 'black', rotation: 45 })
+.setLngLat([12.65147, 55.608166])
+.addTo(map);
+ 
+  </script>
+
+<script src="assets/js/script.js"></script>
 </body>
 </html>
