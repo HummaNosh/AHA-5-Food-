@@ -368,13 +368,3 @@ if (navigator.geolocation) {
     }
   });
 }
-<<<<<<< HEAD
-=======
-
-
-  
-
-  })}
-
-  
->>>>>>> 1fe43c9bafafaa102420624519c3ffb905f64b59
