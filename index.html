@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bulma link-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
-   <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
-    <!-- Bulma link-->
+ 
   
     <title>ACHA 5 Foods</title>
 
@@ -19,6 +18,7 @@
 <body>
 
   <!-- This is hero and nav bar, still needs work-->
+
     <section class="hero is-link is-full height">
         <div class="hero-head">
           <nav class="navbar">
@@ -74,7 +74,7 @@
             <li class="" id="burgers"><a>Burgers</a></li>
             <li class="" id="pizza"><a>Pizzas</a></li>
             <li class="" id="desserts"><a>Desserts</a></li>
-            <li class="" id=""><a>Something different?</a></li>
+            <li class="" id="somethingdiff"><a>Something different?</a></li>
             
           </ul>
         </div>
@@ -88,6 +88,7 @@
 
     <!--shop search and postcode entry-->
  <div class="field">
+   
   <label class="label">Restaurant</label>
   <div class="control">
     <input class="input is-normal is-link" type="text" id="recNames" placeholder="Search for a restaurant...">
@@ -95,9 +96,9 @@
 </div>
 
 <div class="field">
-  <label class="label">Postcode</label>
+  <!-- <label class="label">Postcode</label> -->
   <div class="control">
-    <input class="input is-normal is-link" type="text"  id="postcodeSearch" placeholder="e.g. B80 7ET">
+    <!-- <input class="input is-normal is-link" type="text"  id="postcodeSearch" placeholder="e.g. B80 7ET"> -->
   </div>
   <div id ="location" >Your Current Location:</div>
     <br>
@@ -109,14 +110,28 @@
 </div>
     </header>
   </head>
-  <body>
-        <section class="data" id= "fetchInfo">        
-        </section>
-    </main>
-    <br>
-    <br>
-    <br>
+  <!-- <body> -->
 
+<!-- <div class="wrapper">
+  <div class="sliding-background">
+    
+  </div> -->
+  
+      <!-- Fetched data section -->
+
+
+  <section class="data" id= "fetchInfo">  </section>   
+  <br>
+        <!-- Add slideshow of pictures.. -->
+
+     <img class ="mySlides" src = "images/almond_chicken_curry_75843_16x9.jpeg" alt="curry image" style="width:100%"/>
+      <img class ="mySlides" src = "./images/American-Food.jpeg" alt="curry image" style="width:100%"/>
+      <img class ="mySlides" src = "./images/Non-healthy-dood.jpeg" alt="curry image" style="width:100%"/>
+      <img class ="mySlides" src = "./images/r960-4c4b45e9bcd2b01571b35a4aba758a62.jpeg" alt="curry image" style="width:100%"/>
+      <img class ="mySlides" src = "./images/dessert-assortment.jpeg" alt="curry image" style="width:100%"/> 
+
+    </main>
+    
 
 <!-- <div class="footer-container"> -->
   <footer class="footer">
@@ -130,17 +145,17 @@
     </div>
     <div class="footer-heading footer-2"id="aboutusfooter">
       <h2>About us</h2>
-      <a href="https://github.com/anuur7/Portfolio-Page-Advanced-CSS">About Ayaanle</a>
+      <a href="https://anuur7.github.io/Portfolio-Page-Advanced-CSS/">About Ayaanle</a>
       <a href="https://corey96.github.io/portfolio-showcase/">About Corey</a>
-      <a href="https://github.com/HummaNosh/All-about-ME-My-Portfolio2.0">About Humma</a>
-      <a href="https://github.com/abbezz/Portfolio-demo">About Abdollah</a>
+      <a href="https://hummanosh.github.io/All-about-ME-My-Portfolio2.0/">About Humma</a>
+      <a href="https://abbezz.github.io/Portfolio-demo/">About Abdollah</a>
     </div>
 
       <div class="footer-heading footer-3" id="socialfooter">
         <h2>Social Media </h2>
-        <a href="#">Instagram</a>
-        <a href="#">Github</a>
-        <a href="#">Linkedin</a>
+        <a href="./assets/social.html">Instagram</a>
+        <a href="./assets/social.html">Github</a>
+        <a href="./assets/social.html">Linkedin</a>
        </div>
        <div class="footer-email-form">
            <input type="email" placeholder="Enter your email" id="footer-email">
@@ -169,7 +184,9 @@
         </div>
       </footer> --> 
 
-      <!-- <script src="script.js"></script>  -->
+<script src="assets/js/script.js"></script>
+<!-- </body> -->
+</html>
 </head>
 <body>   
   <div id='map' style='width: 400px; height: 300px;'></div>
