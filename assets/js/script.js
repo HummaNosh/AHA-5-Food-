@@ -330,10 +330,10 @@ if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(async function (position) {
     console.log(position.coords.latitude);
     console.log(position.coords.longitude);
-navigator.geolocation.getCurrentPosition(successLocation,
-errorLocation, {
-  enableHighAccuracy: true
-})
+// navigator.geolocation.getCurrentPosition(successLocation,
+// errorLocation, {
+  // enableHighAccuracy: true
+// })
 
  function successLocation(position) {
    setupMap([position.coords.longitude, position.coords.latitude])
@@ -355,8 +355,8 @@ const userposition = new mapboxgl.GeolocateControl({
   trackUserLocation: true
   })
 map.addControl(userposition)
- const nav = new mapboxgl.NavigatorControl()
- map.addControl(nav)
+//  const nav = new mapboxgl.NavigatorControl()
+//  map.addControl(nav)
 
  const directions = new MapboxDirections({
    accessToken: mapboxgl.accessToken
