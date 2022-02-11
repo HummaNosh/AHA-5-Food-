@@ -178,6 +178,35 @@ async function fetchFood(event) {
   }
 }
 
+function menu() {
+  var menuurl = `https://documenu.p.rapidapi.com/restaurants/search/fields?restaurant_name=dixy&zip_code=b8iph`;
+
+  fetch(menuurl)
+    .then(
+      function (response) {
+        if (response.ok) {
+          response.json().then(function (data) {});
+        }
+      },
+      {
+        method: "GET",
+        headers: {
+          "x-api-key": "<REQUIRED>",
+          "x-rapidapi-host": "documenu.p.rapidapi.com",
+          "x-rapidapi-key":
+            "99487931c9msh09e061c599bd40dp1e25e6jsn37d27e63886d",
+        },
+      }
+    )
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((err) => {
+      console.error(err);
+
+      $("#fetchInfo").append(data.url);
+    });
+}
 // POST CODE FUNCTION NOT WORKING - FURTHER DEVELOPMENT...
 
 function postcode(data1) {
@@ -217,35 +246,6 @@ function postcode(data1) {
 
 postcode();
 
-function menu() {
-  var menuurl = `https://documenu.p.rapidapi.com/restaurants/search/fields?restaurant_name=dixy&zip_code=b8iph`;
-
-  fetch(menuurl)
-    .then(
-      function (response) {
-        if (response.ok) {
-          response.json().then(function (data) {});
-        }
-      },
-      {
-        method: "GET",
-        headers: {
-          "x-api-key": "<REQUIRED>",
-          "x-rapidapi-host": "documenu.p.rapidapi.com",
-          "x-rapidapi-key":
-            "99487931c9msh09e061c599bd40dp1e25e6jsn37d27e63886d",
-        },
-      }
-    )
-    .then((response) => {
-      console.log(response);
-    })
-    .catch((err) => {
-      console.error(err);
-
-      $("#fetchInfo").append(data.url);
-    });
-}
 // ------------------------------------------------------------------------------------------------------------
 
 // GIVE ME PIZZAS ONLY WHEN I CLICK THE PIZZA BUTTON....................
