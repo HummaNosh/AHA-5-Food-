@@ -183,6 +183,12 @@ li a:hover {
   font-size: 15px;
 }
 
+td,
+th {
+  padding: 1rem;
+  text-align: center;
+}
+
 .list-group-item {
   list-style: none;
   padding: 10px;
@@ -220,12 +226,12 @@ footer {
 
 /* Coming soon */
 
-#comingsoon {
+/* #comingsoon {
   font-size: 10rem;
   text-align: center;
   margin-top: 20rem;
 }
-/* .wrapper {
+.wrapper {
   overflow: hidden;
 }
 .sliding-background {
@@ -237,13 +243,14 @@ footer {
   background: url("/images/almond_chicken_curry_75843_16x9.jpeg");
   height: 500px;
   width: 5076px;
-}
+/* } */
 
-.sliding-background {
+/* .sliding-background {
   background: url("/images/American-Food.jpeg");
   height: 560px;
   width: 5076px;
   animation: slide 60s linear infinite;
+  position: relative;
 }
 
 @keyframes slide {
@@ -262,5 +269,34 @@ footer {
   background-size: cover;
 } */
 
-.mySlides {
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* .mod {
+  modal.style.display = "block"
+} */
+
+#myModal {
+  height: fit-content;
 }

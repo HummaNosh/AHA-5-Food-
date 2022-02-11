@@ -6,10 +6,25 @@ let pizzaBtn = $("#pizza");
 let kebabBtn = $("#kebab");
 let dessertsBtn = $("#desserts");
 let somethingdiffBtn = $("#somethingdiff");
-let postcodeSearch = document.getElementById("#postcodeSearch");
+let postcodeSearch = $("#postcodeSearch");
 let info = $("fetchInfo");
 let boxed = $("#boxed");
+let modal = document.querySelector("#myModal");
+let modalBtn = document.querySelector("#modalBtn");
+let mod = document.querySelectorAll("mod");
+let something = document.getElementById("#somethinggg");
 
+modalBtn.addEventListener("click", () => {
+  console.log("modal");
+  modal.style.display = "block";
+});
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
 // Job of the clear button
 clearBtn.addEventListener("click", () => {
   // Clears fetch info box
@@ -43,32 +58,94 @@ async function fetchFood(event) {
       // Give me 10 bits of data
       for (i = 0; i < 10; i++) {
         // create it in a list
-        let listEl = $("<li>");
-        let listDetail = name.concat("");
-        listEl.addClass("list-group-item").text(listDetail);
-        listEl.appendTo("#fetchInfo");
+        // let listEl = $("<li>");
+        // let listDetail = name.concat("");
+        // listEl.addClass("list-group-item").text(listDetail);
 
+        var createTableRow = document.createElement("tr");
+        var tableData = document.createElement("td");
+        var link = document.createElement("a");
+
+        // listEl.appendTo("#fetchInfo");
+
+        link.textContent =
+          data.restaurants[i].restaurant.name +
+          " - Address: " +
+          data.restaurants[i].restaurant.location.address +
+          data.restaurants[i].restaurant.thumb;
+        link.href = "stuff.html";
+
+        // $("#somethinggg").append(
+        //   data.restaurants[i].restaurant.location.address
+        // );
+
+        // $("#fetchInfo").append(data.restaurants[i].restaurant.featured_image);
+
+        // data.restaurants[i].restaurant.location.address +
+        // "  Opening times : " +
+        // data.restaurants[i].restaurant.timings +
+        // " - Customer Rating : " +
+        // data.restaurants[i].restaurant.user_rating.rating_text;
+
+        tableData.appendChild(link);
+        createTableRow.appendChild(tableData);
+        fetchInfo.appendChild(createTableRow);
+
+        // $("#fetchInfo").append(data.restaurants[i].restaurant.thumb);
         // Bring Data in the info box..................
 
         // Rest Name
-        $("#fetchInfo").append(
-          data.restaurants[i].restaurant.name + " - Address: "
-        );
+        // $("#fetchInfo").append(
+        //   data.restaurants[i].restaurant.name + " - Address: "
+        // );
         // Rest address
-        $("#fetchInfo").append(data.restaurants[i].restaurant.location.address);
+        // let something1 = document.getElementById("#someID");
+
+        // let buttonmod = document.createElement("button");
+        // buttonmod.innerHTML = "modeling";
+        // ("modelingg");
+        // document.fetchInfo.appendChild(buttonmod);
+        // <button>somethingmod</button>;
+        // buttonmod.addEventListener("click", () => {
+        //   console.log("somethinggggg");
+        // });
+
+        // let modaling = $("<button>").attr("id", "modz");
+
+        // // let something = name.concat("More details");
+
+        // modaling.addClass("mod").text(something);
+        // modaling.appendTo("#fetchInfo");
+
+        // let blabtn = document.querySelector("#modz");
+
+        // blabtn.onclick = function () {
+        //   console.log("modal");
+        //   modal.style.display = "block";
+        // };
+
+        // // something1.addEventListener("click", () => {
+        // //   console.log("modling worked");
+        // //   modal.style.display = "block";
+        // // });
+
+        // // -----------------------------------------------------------------------------
+
+        // $("#myModal").append(data.restaurants[i].restaurant.location.address);
+
         // Rest opening times
-        $("#fetchInfo").append(
+        $("#myModal").append(
           "  Opening times : " + data.restaurants[i].restaurant.timings
         );
-        // Rest rating
-        $("#fetchInfo").append(
-          " - Customer Rating : " +
-            data.restaurants[i].restaurant.user_rating.rating_text
-        );
-        // Get customer phone number
-        $("#fetchInfo").append(
-          " - Phone number  " + data.restaurants[i].restaurant.phone_numbers
-        );
+        // // Rest rating
+        // $("#fetchInfo").append(
+        //   " - Customer Rating : " +
+        //     data.restaurants[i].restaurant.user_rating.rating_text
+        // );
+        // // Get customer phone number
+        // $("#fetchInfo").append(
+        //   " - Phone number  " + data.restaurants[i].restaurant.phone_numbers
+        // );
 
         console.log(data);
         console.log("button clicked");
@@ -107,35 +184,68 @@ function postcode(data1) {
   // let lat = data1.result[0].lat;
   // let lon = data1.result[0].lon;
 
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(async function (data1) {
-      console.log(data1.coords.latitude);
-      console.log(data1.coords.longitude);
+  // if (navigator.geolocation) {
+  //   navigator.geolocation.getCurrentPosition(async function (data1) {
+  //     console.log(data1.coords.latitude);
+  //     console.log(data1.coords.longitude);
 
-      let latitude = data1.coords.latitude;
-      let longitude = data1.coords.longitude;
+  //     let latitude = data1.coords.latitude;
+  //     let longitude = data1.coords.longitude;
 
-      var URL = `https://api.postcodes.io/postcodes?q=${postcodeSearch}&lon=${data1.coords.longitude}&lat=${data1.coords.latitude}`;
-      fetch(URL).then(function (response) {
-        if (response.ok) {
-          response.json().then(function (data) {
-            var loc = data.result[0].postcode;
+  var URL = `https://api.postcodes.io/postcodes/${postcodeSearch.value}/autocomplete`;
+  fetch(URL).then(function (response) {
+    if (response.ok) {
+      response.json().then(function (data) {
+        // var loc = data.result[0].postcode;
 
-            $("#location").append("  " + data.result[0].postcode);
-            console.log(data);
-            console.log(URL);
-            console.log(loc);
-            console.log(postcodeSearch);
-            console.log(latitude);
-          });
-        }
+        // var custom = data.result[0].postcode;
+
+        // $("#fetchInfo").append(custom);
+        // $("#location").append("  " + data.result[0].postcode);
+        console.log(data);
+        console.log(URL);
+        // console.log(loc);
+        console.log(postcodeSearch.value);
+        // console.log(latitude);
       });
-    });
-  }
+    }
+  });
 }
+//     );
+//   }
+// }
 
 postcode();
 
+function menu() {
+  var menuurl = `https://documenu.p.rapidapi.com/restaurants/search/fields?restaurant_name=dixy&zip_code=b8iph`;
+
+  fetch(menuurl)
+    .then(
+      function (response) {
+        if (response.ok) {
+          response.json().then(function (data) {});
+        }
+      },
+      {
+        method: "GET",
+        headers: {
+          "x-api-key": "<REQUIRED>",
+          "x-rapidapi-host": "documenu.p.rapidapi.com",
+          "x-rapidapi-key":
+            "99487931c9msh09e061c599bd40dp1e25e6jsn37d27e63886d",
+        },
+      }
+    )
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((err) => {
+      console.error(err);
+
+      $("#fetchInfo").append(data.url);
+    });
+}
 // ------------------------------------------------------------------------------------------------------------
 
 // GIVE ME PIZZAS ONLY WHEN I CLICK THE PIZZA BUTTON....................
@@ -177,14 +287,14 @@ async function fetchPizzas(event) {
         listEl.appendTo("#fetchInfo");
 
         // Bring Data in the info box
-        $("#fetchInfo").append(
+        $(".modal").append(
           data.restaurants[i].restaurant.name + " - Address: "
         );
         // Rest Address
         $("#fetchInfo").append(data.restaurants[i].restaurant.location.address);
 
         // Rest opening times
-        $("#fetchInfo").append(
+        $("#myModal").append(
           "  Opening times : " + data.restaurants[i].restaurant.timings
         );
         // Rest rating
