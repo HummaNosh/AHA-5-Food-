@@ -6,6 +6,7 @@ let pizzaBtn = $("#pizza");
 let kebabBtn = $("#kebab");
 let dessertsBtn = $("#desserts");
 let somethingdiffBtn = $("#somethingdiff");
+let makeyourownBtn = $("#makeyourown");
 let postcodeSearch = $("#postcodeSearch");
 let info = $("fetchInfo");
 let boxed = $("#boxed");
@@ -536,6 +537,54 @@ async function fetchSomething(event) {
         );
       }
     });
+  }
+}
+
+makeyourownBtn.on("click", fetchmakeyourown);
+async function fetchmakeyourown(event) {
+  event.preventDefault();
+
+  const response = await fetch(
+    `https://yummly2.p.rapidapi.com/feeds/auto-complete?q=chicken%20soup`,
+
+    {
+      "x-rapidapi-host": "yummly2.p.rapidapi.com",
+      "x-rapidapi-key": "99487931c9msh09e061c599bd40dp1e25e6jsn37d27e63886d",
+    }
+  );
+
+  const data = await response.json();
+  $("#fetchInfo").html("");
+  // Give me 10 bits of data
+  for (i = 0; i < 10; i++) {
+    // create it in a list
+    var listEl = $("<li>");
+    var listDetail = name.concat("");
+    listEl.addClass("list-group-item").text(listDetail);
+    listEl.appendTo("#fetchInfo");
+
+    console.log(data);
+    // // Bring Data in the info box
+    // $("#fetchInfo").append(
+    //   data.restaurants[i].restaurant.name + " - Address: "
+    // );
+    // // Rest Address
+    // $("#fetchInfo").append(data.restaurants[i].restaurant.location.address);
+    // console.log("some desserts");
+
+    // // Rest opening times
+    // $("#fetchInfo").append(
+    //   "  Opening times : " + data.restaurants[i].restaurant.timings
+    // );
+    // // Rest rating
+    // $("#fetchInfo").append(
+    //   " - Customer Rating : " +
+    //     data.restaurants[i].restaurant.user_rating.rating_text
+    // );
+    // // Get customer phone number
+    // $("#fetchInfo").append(
+    //   " - Phone number  " + data.restaurants[i].restaurant.phone_numbers
+    // );
   }
 }
 
