@@ -325,48 +325,46 @@ async function fetchDesserts(event) {
 //   }
 // }
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiYWJiZXp6enoiLCJhIjoiY2t6N2J6YjB6MGsxMDJwczhreXJtY2J4MyJ9.GL4WPa1EtVSHSW5eMtzVPA';
+mapboxgl.accessToken =
+  "pk.eyJ1IjoiYWJiZXp6enoiLCJhIjoiY2t6N2J6YjB6MGsxMDJwczhreXJtY2J4MyJ9.GL4WPa1EtVSHSW5eMtzVPA";
+
 if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(async function (position) {
     console.log(position.coords.latitude);
     console.log(position.coords.longitude);
-// navigator.geolocation.getCurrentPosition(successLocation,
-// errorLocation, {
-  // enableHighAccuracy: true
-// })
+    // navigator.geolocation.getCurrentPosition(successLocation,
+    // errorLocation, {
+    // enableHighAccuracy: true
+    // })
 
- function successLocation(position) {
-   setupMap([position.coords.longitude, position.coords.latitude])
-}
+    function successLocation(position) {
+      setupMap([position.coords.longitude, position.coords.latitude]);
+    }
 
-function errorLocation() {}
- 
-function setupMap(center) {
-const map = new mapboxgl.Map({
-container: 'map',
-style: 'mapbox://styles/mapbox/streets-v11',
-center: center,
-zoom: 15
-})
-const userposition = new mapboxgl.GeolocateControl({
-  positionOptions: {
-  enableHighAccuracy: true
-  },
-  trackUserLocation: true
-  })
-map.addControl(userposition)
-//  const nav = new mapboxgl.NavigatorControl()
-//  map.addControl(nav)
+    function errorLocation() {}
 
- const directions = new MapboxDirections({
-   accessToken: mapboxgl.accessToken
+    function setupMap(center) {
+      const map = new mapboxgl.Map({
+        container: "map",
+        style: "mapbox://styles/mapbox/streets-v11",
+        center: center,
+        zoom: 15,
+      });
+      const userposition = new mapboxgl.GeolocateControl({
+        positionOptions: {
+          enableHighAccuracy: true,
+        },
+        trackUserLocation: true,
+      });
+      map.addControl(userposition);
+      //  const nav = new mapboxgl.NavigatorControl()
+      //  map.addControl(nav)
+
+      const directions = new MapboxDirections({
+        accessToken: mapboxgl.accessToken,
+      });
+
+      map.addControl(directions, "top-left");
+    }
   });
-  
-  map.addControl(directions, "top-left")
-  
 }
-
-
-  
-
-  })}
