@@ -222,7 +222,7 @@ function postcode(data1) {
   //     let latitude = data1.coords.latitude;
   //     let longitude = data1.coords.longitude;
 
-  var URL = `https://api.postcodes.io/postcodes/${postcodeSearch.value}/autocomplete`;
+  var URL = `https://api.getAddress.io/autocomplete/${postcodeSearch.value}`;
   fetch(URL).then(function (response) {
     if (response.ok) {
       response.json().then(function (data) {
